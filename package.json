@@ -18,7 +18,12 @@
     "build:electron": "npm run build && electron-builder"
   },
   "build": {
-    "publish": "never",
+    "publish": [
+      {
+        "provider": "github",
+        "releaseType": "draft"
+      }
+    ],
     "appId": "com.navegantus.app",
     "productName": "Navegantus",
     "directories": {
