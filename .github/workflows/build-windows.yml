@@ -1,0 +1,38 @@
+name: Build Electron App (.exe)
+
+on:
+  push:
+    tags:
+      - 'v*'  # exemplo: v1.0.0
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Build app React (Vite)
+        run: npm run build
+
+      - name: Build executável Electron
+        run: npx electron-builder --windows
+
+      - name: Upload executável como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: Navegantus-Installer
+          path: |
+            dist/*.exe
+            dist/*.msi
+            dist/*.zip
