@@ -11,18 +11,17 @@ function createWindow() {
     },
   });
 
-  const startUrl =
-    process.env.VITE_DEV_SERVER_URL || `file://${path.join(__dirname, 'dist/index.html')}`;
+  const isDev = !app.isPackaged;
 
-  win.loadURL(startUrl);
+  if (isDev) {
+    win.loadURL(process.env.VITE_DEV_SERVER_URL || 'http://localhost:5173');
+  } else {
+    win.loadFile(path.join(__dirname, 'dist', 'index.html'));
+  }
+
+  if (isDev) {
+    win.webContents.openDevTools();
+  }
 }
 
 app.whenReady().then(createWindow);
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
-});
-
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) createWindow();
-});
