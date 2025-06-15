@@ -24,7 +24,7 @@ export interface UserLogin {
   id: string;
   email: string;
   name: string;
-  roles: UserRole[];
+  roles: UserRole;
 }
 
 export interface FirstLoginRequest extends ResetPasswordRequest {}

@@ -24,7 +24,7 @@ export const useLogin = () => {
     onSuccess: async (res) => {
       authenticate(res);
 
-      navigate("/perfil", { replace: true });
+      navigate("/", { replace: true });
     },
     onError: (err) => {
       console.log({ err });

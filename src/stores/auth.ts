@@ -9,7 +9,7 @@ interface User {
   id: string;
   email: string;
   name: string;
-  roles: UserRole[];
+  role: UserRole;
 }
 export interface UserPermission {
   id: string;
@@ -56,7 +56,7 @@ export const useAuthStore = create<Store>()(
             id: params.user.id,
             email: params.user.email,
             name: params.user.name,
-            roles: params.user.roles,
+            role: params.user.roles,
           },
         }),
       updateUserInfo: (params) =>

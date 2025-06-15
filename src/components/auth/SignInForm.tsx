@@ -18,7 +18,7 @@ const initialValues: Values = {
 };
 
 const SignInSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  user: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().required("Required"),
 });
 
@@ -30,6 +30,7 @@ export default function SignInForm({ setUser }: LoginProps) {
   const { mutate: login } = useLogin();
 
   const handleSubmit = ({ user, password }: Values) => {
+    console.log("user" + user);
     setUser(user);
     login({ email: user, password });
   };

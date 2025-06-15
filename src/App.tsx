@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router";
 import { HashRouter } from 'react-router-dom';
 import SignIn from "./pages/AuthPages/SignIn";
-import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
 import UserProfiles from "./pages/UserProfiles";
 import Videos from "./pages/UiElements/Videos";
@@ -19,6 +18,8 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import { ProtectedRoute } from "./components/routes/ProtectedRoute";
+import { AnonymousRoute } from "./components/routes/AnonymousRoute";
 
 export default function App() {
   return (
@@ -27,12 +28,14 @@ export default function App() {
         <ScrollToTop />
         <Routes>
           {/* Dashboard Layout */}
-          <Route element={<AppLayout />}>
-            <Route index path="/" element={<Home />} />
-
+              <Route element={<AppLayout />}>
+              <Route index path="/" element={
+                <ProtectedRoute><Home /></ProtectedRoute>
+              } />
+            
             {/* Others Page */}
-            <Route path="/profile" element={<UserProfiles />} />
-            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/profile" element={<ProtectedRoute><UserProfiles /></ProtectedRoute>} />
+            <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
             <Route path="/blank" element={<Blank />} />
 
             {/* Forms */}
@@ -53,12 +56,9 @@ export default function App() {
             <Route path="/line-chart" element={<LineChart />} />
             <Route path="/bar-chart" element={<BarChart />} />
           </Route>
+          
+            <Route path="/signin" element={<AnonymousRoute><SignIn /></AnonymousRoute>} />
 
-          {/* Auth Layout */}
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-
-          {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>
