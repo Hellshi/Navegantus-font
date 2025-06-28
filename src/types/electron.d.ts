@@ -1,12 +1,14 @@
-export {};
+export interface IElectronAPI {
+  electronStore: {
+    get: (key: string) => any
+    set: (key: string, value: any) => void
+    delete: (key: string) => void
+    clear: () => void
+  }
+}
 
 declare global {
   interface Window {
-    electronStore: {
-      get: (key: string) => T;
-      set: (key: string, value: T) => void;
-      delete: (key: string) => void;
-      clear: () => void;
-    };
+    electronStore: IElectronAPI["electronStore"]
   }
 }

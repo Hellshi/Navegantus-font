@@ -2,7 +2,6 @@
   "name": "navegantus-front",
   "private": true,
   "version": "0.0.1",
-  "type": "module",
   "main": "electron.cjs",
   "author": {
     "name": "Hellem Lima AKA Hellshi",
@@ -13,7 +12,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "electron": "cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "dev:electron": "cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
     "start": "electron .",
     "build:electron": "npm run build && electron-builder"
   },
@@ -24,26 +23,17 @@
     "directories": {
       "buildResources": "assets"
     },
-    "files": [
-      "dist",
-      "electron.cjs"
-    ],
+    "files": ["dist", "electron.cjs", "preload.cjs"],
     "win": {
-      "target": [
-        "nsis"
-      ],
+      "target": ["nsis"],
       "icon": "assets/icons/icon.ico"
     },
     "linux": {
-      "target": [
-        "AppImage"
-      ],
+      "target": ["AppImage"],
       "icon": "assets/icon.png"
     },
     "mac": {
-      "target": [
-        "dmg"
-      ],
+      "target": ["dmg"],
       "icon": "assets/icons/icon.icns"
     }
   },
@@ -62,7 +52,7 @@
     "axios-auth-refresh": "^3.3.6",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
-    "electron-store": "^10.0.1",
+    "electron-store": "^8.1.0",
     "flatpickr": "^4.6.13",
     "formik": "^2.4.6",
     "notistack": "^3.0.2",
@@ -83,6 +73,7 @@
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@tailwindcss/postcss": "^4.0.8",
+    "@types/node": "^20.0.0",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
