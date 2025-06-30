@@ -20,7 +20,7 @@ export default defineConfig({
     outDir: "dist",
     rollupOptions: {
       // Remover electron-store do external para o renderer
-      // external: ['electron-store'], // Comentado
+       external: ['electron-store'], // Comentado
     },
   },
   resolve: {

@@ -23,5 +23,5 @@
     "noUncheckedSideEffectImports": true,
     "outDir": "dist"
   },
-  "include": ["src", "preload.cjs"]
+  "include": ["src"]
 }
