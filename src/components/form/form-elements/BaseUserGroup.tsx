@@ -21,7 +21,7 @@ const cpfInputRef = useMask({
   })
 
 
-  const [selectedSex, setSelectedSex] = useState<string>("");
+  const [, setSelectedSex] = useState<string>("");
 
   const countries = [{ code: "BR", label: "+55" }];
 
@@ -41,9 +41,10 @@ const cpfInputRef = useMask({
   return (
     <ComponentCard title="Dados Básicos">
       <div className="space-y-6">
+
         <div>
-          <Label htmlFor="input">Nome Completo</Label>
-          <Input type="text" id="input" />
+          <Label htmlFor="cpf">Nome Completo</Label>
+          <Input type="text" id="input" ref={rgInputRef} />
         </div>
 
         <div>

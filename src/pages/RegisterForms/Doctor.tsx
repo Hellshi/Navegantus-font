@@ -14,6 +14,7 @@ import TextAreaInput from "../../components/form/form-elements/TextAreaInput";
 import InputStates from "../../components/form/form-elements/InputStates";
 import PageMeta from "../../components/common/PageMeta";
 import BaseUserGroup from "../../components/form/form-elements/BaseUserGroup";
+import DefaultAddress from "../../components/form/form-elements/Address";
 
 const initialValues = {
   name: "",
@@ -62,7 +63,7 @@ export default function DoctorFormRegister() {
         title="React.js Form Elements Dashboard | TailAdmin - React.js Admin Dashboard Template"
         description="This is React.js Form Elements Dashboard page for TailAdmin"
       />
-      <PageBreadcrumb pageTitle="Form Elements" />
+      <PageBreadcrumb pageTitle="Registro de Pacientes" />
 
       <Formik
         initialValues={initialValues}
@@ -80,6 +81,7 @@ export default function DoctorFormRegister() {
                 <InputStates />
               </div>
               <div className="space-y-6">
+                <DefaultAddress />
                 <InputGroup />
                 <FileInputExample />
                 <CheckboxComponents />
