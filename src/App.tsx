@@ -20,6 +20,8 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import { ProtectedRoute } from "./components/routes/ProtectedRoute";
 import { AnonymousRoute } from "./components/routes/AnonymousRoute";
+import DoctorFormRegister from "./pages/RegisterForms/Doctor";
+import { RoleName } from "./services/interfaces/users";
 
 export default function App() {
   return (
@@ -35,6 +37,7 @@ export default function App() {
             
             {/* Others Page */}
             <Route path="/profile" element={<ProtectedRoute><UserProfiles /></ProtectedRoute>} />
+            <Route path="/doctor-register" element={<ProtectedRoute /* requiredPermission={RoleName.COORDINATOR} */><DoctorFormRegister /></ProtectedRoute>} />
             <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
             <Route path="/blank" element={<Blank />} />
 

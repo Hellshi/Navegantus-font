@@ -3,20 +3,16 @@ import { Link, useLocation } from "react-router";
 
 // Assume these icons are imported from an icon library
 import {
-  BoxCubeIcon,
   CalenderIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
   ListIcon,
   PageIcon,
-  PieChartIcon,
-  PlugInIcon,
   TableIcon,
   UserCircleIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
-import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
   name: string;
@@ -38,20 +34,21 @@ const navItems: NavItem[] = [
   },
   {
     icon: <UserCircleIcon />,
-    name: "User Profile",
-    path: "/profile",
+    name: "Cadastros",
+    subItems: [{ name: "Médico", path: "/doctor-register", pro: false }],
   },
   {
     name: "Forms",
     icon: <ListIcon />,
     subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
   },
-  {
-    name: "Tables",
+   {
+    name: "Hospitals",
     icon: <TableIcon />,
+    path: "/hospitals",
     subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
   },
-  {
+ {
     name: "Pages",
     icon: <PageIcon />,
     subItems: [
@@ -62,7 +59,7 @@ const navItems: NavItem[] = [
 ];
 
 const othersItems: NavItem[] = [
-  {
+ /*  {
     icon: <PieChartIcon />,
     name: "Charts",
     subItems: [
@@ -90,7 +87,7 @@ const othersItems: NavItem[] = [
       { name: "Sign Up", path: "/signup", pro: false },
     ],
   },
-];
+ */];
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
@@ -368,7 +365,6 @@ const AppSidebar: React.FC = () => {
             </div>
           </div>
         </nav>
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
       </div>
     </aside>
   );
