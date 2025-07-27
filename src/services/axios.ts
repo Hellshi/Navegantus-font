@@ -58,7 +58,6 @@ api.interceptors.request.use(
 
       return config;
     }
-
     config.headers.Authorization = `Bearer ${getAccessToken()}`;
 
     return config;

@@ -23,6 +23,7 @@ import { AnonymousRoute } from "./components/routes/AnonymousRoute";
 import DoctorFormRegister from "./pages/RegisterForms/Patient";
 import { RoleName } from "./services/interfaces/users";
 import PatientFormRegister from "./pages/RegisterForms/Patient";
+import PatientTables from "./pages/Tables/PatientTable";
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
 
             {/* Tables */}
             <Route path="/basic-tables" element={<BasicTables />} />
+            <Route path="/patient-tables" element={<PatientTables />} />
 
             {/* Ui Elements */}
             <Route path="/alerts" element={<Alerts />} />

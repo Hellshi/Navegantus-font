@@ -6,4 +6,7 @@ export const endpoints = {
     patient: "/patient",
     doctor: "/doctor",
   },
+  list: {
+    patients: "/patient",
+  }
 };
