@@ -30,7 +30,6 @@ export default function SignInForm({ setUser }: LoginProps) {
   const { mutate: login } = useLogin();
 
   const handleSubmit = ({ user, password }: Values) => {
-    console.log("user" + user);
     setUser(user);
     login({ email: user, password });
   };

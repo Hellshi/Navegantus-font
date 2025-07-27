@@ -5,7 +5,8 @@ import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 import BaseUserGroup from "../../components/form/form-elements/BaseUserGroup";
 import DefaultAddress from "../../components/form/form-elements/Address";
-import BaseEmployeeGroup from "../../components/form/form-elements/BaseEmployeeGroup";
+import BaseMedicalNumsGroup from "../../components/form/form-elements/BaseMedicalNumsGroup";
+import { useCreatePatient } from "../../services/register/patient";
 
 const initialValues = {
   name: "",
@@ -20,6 +21,11 @@ const initialValues = {
   email: "",
   phone: "",
   whatsapp_phone: "",
+  cep: "",
+  city: "",
+  state: "",
+  neighborhood: "",
+
 };
 
 const validationSchema = Yup.object().shape({
@@ -31,8 +37,8 @@ const validationSchema = Yup.object().shape({
   mothers_name: Yup.string().optional(),
   rg: Yup.string().required("RG é obrigatório"),
   cpf: Yup.string()
-    .required("CPF é obrigatório")
-    .matches(/^\d{11}$/, "CPF deve ter 11 dígitos numéricos"),
+    .required("CPF é obrigatório"),
+    //.matches(/^\d{11}$/, "CPF deve ter 11 dígitos numéricos"),
   sus_id_card: Yup.string().optional(),
   health_insurance: Yup.string().optional(),
   birthSex: Yup.mixed()
@@ -47,9 +53,15 @@ const validationSchema = Yup.object().shape({
   neighborhood: Yup.string().required("Bairro é obrigatório"),
 });
 
-export default function DoctorFormRegister() {
+export default function PatientFormRegister() {
+    const { mutate: createPatient } = useCreatePatient();
+  
   const handleSubmit = (values: typeof initialValues) => {
-    console.log("Form values:", values);
+    const { cep, city, state, neighborhood, ...rest } = values
+    const address = { cep, city, state, neighborhood }
+    const valuesUpdated = {...rest, address}
+    console.log(valuesUpdated)
+    createPatient(valuesUpdated);
   };
 
   return (
@@ -58,36 +70,25 @@ export default function DoctorFormRegister() {
         title="Navegantus"
         description="Navegantus"
       />
-      <PageBreadcrumb pageTitle="Registro de Funcionário" />
+      <PageBreadcrumb pageTitle="Registro de Paciente" />
 
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        /* validationSchema={validationSchema} */
         onSubmit={handleSubmit}
       >
-        {({ values }) => (
           <Form>
             <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
               <div className="space-y-6">
                 <BaseUserGroup />
-                {/* <DefaultInputs />
-                <SelectInputs />
-                <TextAreaInput />
-                <InputStates /> */}
               </div>
               <div className="space-y-6">
-                <BaseEmployeeGroup/>
+                <BaseMedicalNumsGroup/>
                 <DefaultAddress />
-                {/* <InputGroup />
-                <FileInputExample />
-                <CheckboxComponents />
-                <RadioButtons />
-                <ToggleSwitch />
-                <DropzoneComponent /> */}
               </div>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
               <button
                 type="submit"
                 className="rounded bg-primary px-4 py-2"
@@ -96,7 +97,6 @@ export default function DoctorFormRegister() {
               </button>
             </div>
           </Form>
-        )}
       </Formik>
     </div>
   );

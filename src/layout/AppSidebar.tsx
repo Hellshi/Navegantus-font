@@ -35,7 +35,7 @@ const navItems: NavItem[] = [
   {
     icon: <UserCircleIcon />,
     name: "Cadastros",
-    subItems: [{ name: "Médico", path: "/doctor-register", pro: false }],
+    subItems: [{ name: "Médico", path: "/doctor-register", pro: false }, { name: "Paciente", path: "/patient-register", pro: false }],
   },
   {
     name: "Forms",
