@@ -22,7 +22,7 @@ export const useCreatePatient = () => {
     mutationFn: postCreatePatient,
     onSuccess: async () => {
         //Redirect to a listing user screen here (I Think)
-      navigate("/", { replace: true });
+      navigate("/patient", { replace: true });
     },
     onError: (err: any) => {
       console.log({ err });
