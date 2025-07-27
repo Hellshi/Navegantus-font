@@ -8,9 +8,14 @@ import {
 
 import Badge from "../../ui/badge/Badge";
 import { useFindAllPatients } from "../../../services/listPatients";
+import { useNavigate } from "react-router";
 
 export default function BasicTableOne() {
   const { data } = useFindAllPatients(1, 10);
+  const navigate = useNavigate();
+  const handleClick = (id: string) => {
+    navigate(`/patient?id=${id}`);
+  }
 
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
@@ -49,7 +54,7 @@ export default function BasicTableOne() {
           {/* Table Body */}
           <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
             {data && data.map((order) => (
-              <TableRow key={order.id} className="cursor-pointer hover:bg-gray-50" onClick={() => console.log(order)}>
+              <TableRow key={order.id} className="cursor-pointer hover:bg-gray-50" onClick={() => handleClick(order.id)}>
                 <TableCell className="px-5 py-4 sm:px-6 text-start">
                   <div className="flex items-center gap-3">
                     <div>

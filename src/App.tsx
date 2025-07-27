@@ -24,6 +24,7 @@ import DoctorFormRegister from "./pages/RegisterForms/Patient";
 import { RoleName } from "./services/interfaces/users";
 import PatientFormRegister from "./pages/RegisterForms/Patient";
 import PatientTables from "./pages/Tables/PatientTable";
+import PatientDetails from "./pages/PatientDetails";
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
             
             {/* Others Page */}
             <Route path="/profile" element={<ProtectedRoute><UserProfiles /></ProtectedRoute>} />
+            <Route path="/patient" element={<ProtectedRoute><PatientDetails /></ProtectedRoute>} />
             <Route path="/doctor-register" element={<ProtectedRoute /* requiredPermission={RoleName.COORDINATOR} */><DoctorFormRegister /></ProtectedRoute>} />
             <Route path="/patient-register" element={<ProtectedRoute /* requiredPermission={RoleName.COORDINATOR} */><PatientFormRegister /></ProtectedRoute>} />
             <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
