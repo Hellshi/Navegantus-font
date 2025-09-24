@@ -8,5 +8,8 @@ export const endpoints = {
   },
   list: {
     patients: "/patient",
-  }
+  },
+  reports: {
+    pathologyReport: "/patient/add-pathological-report",
+  },
 };

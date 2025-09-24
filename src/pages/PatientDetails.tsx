@@ -25,7 +25,7 @@ export default function PatientDetails() {
 
   const tabs = [
     { id: "overview", label: "Visão Geral" },
-    { id: "personal", label: "Pessoal" },
+    { id: "personal", label: "Anatopatologia" },
     { id: "address", label: "Endereço" },
     { id: "settings", label: "Configurações" },
   ]
@@ -128,7 +128,7 @@ export default function PatientDetails() {
           )}
 
           {activeTab === "personal" && (
-            <div className="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800/50 overflow-hidden">
+            <div className="rounded-lg border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800/50 overflow-hidden">
               <UserInfoCard />
             </div>
           )}

@@ -60,7 +60,6 @@ export default function PatientFormRegister() {
     const { cep, city, state, neighborhood, ...rest } = values
     const address = { cep, city, state, neighborhood }
     const valuesUpdated = {...rest, address}
-    console.log(valuesUpdated)
     createPatient(valuesUpdated);
   };
 

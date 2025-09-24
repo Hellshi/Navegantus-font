@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { PaginatedResponse } from "./interfaces/pagination";
 import { api } from "./axios";
 import { endpoints } from "./endpoints";
 
